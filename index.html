@@ -10,15 +10,10 @@
 　<HR align="center">
    <br>
    <br>
-   <center>
-    <input type="button" value="10回まわす" onClick="drawing()" style="WIDTH: 200px; HEIGHT: 70px">
-   </center>
-   <br>
-   <br>
+
 
     <div id="img_div">
     </div>
-
 
     <!-- scriptタグが読み込まれる前に指定するdivが読み込まれている必要があるので、
       scriptタグは最後に置いた。
@@ -26,6 +21,7 @@
     <script>
       // 選ぶ画像の数
       let number_of_tags = 10;
+      let number_of_images = 33;
        // 最初に空のimgタグを作っておく
       function createImageTag(tag_number, parent_tag_id) {
         for(let i = 0; i < tag_number; i++){
@@ -39,16 +35,18 @@
       // 第一引数→作る数、第二引数→作ったものを親要素にするタグ
       createImageTag(number_of_tags, "img_div");
       // 0.png, 1.png～というように画像の名前は数字に設定しておく
-      function choosingImage(tag_number){
+      function choosingImage(tag_number,images_number){
         // ランダムな数字を格納する配列
         let chosen_numbers = [];
-        for(let i = 0; i < tag_number; i++){
+        for(let i = 0; i < images_number; i++){
           // ランダムな数字を配列に入れる
-          let random_number = Math.floor(Math.random()*number_of_tags);
+          let random_number = Math.floor(Math.random()*images_number);
           chosen_numbers.push(random_number);
         }
+       console.log(chosen_numbers);
         for(let i = 0; i < tag_number; i++){
           // 配列の数字を参照し、その番号の画像を表示
+
           // idを取り出す（idは連番）
           let img_tag = document.getElementById("img" + String(i));
           // 配列を参照
@@ -57,8 +55,17 @@
       }
       // ボタンを押すと呼ばれる関数
       function drawing() {
-        choosingImage(number_of_tags);
+        choosingImage(number_of_tags, number_of_images);
       }
+      
     </script>
+<br>
+<br>
+<center>
+<input type="button" value="10回まわす" onClick="drawing()" style="WIDTH: 200px; HEIGHT: 70px">
+</center>
+<br>
+<br>
+
   </body>
 </html>
